@@ -20,6 +20,6 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         position: relative;
-        background-color: darkblue;
+        color: #fff;
     }
 `
