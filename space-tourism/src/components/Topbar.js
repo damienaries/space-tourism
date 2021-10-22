@@ -34,7 +34,7 @@ const StyledBar = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 90px;
     background: transparent;
     position: absolute;
     margin-top: 3rem;
@@ -55,23 +55,30 @@ const StyledBar = styled.div`
         width: 60%;
         padding: 4rem 7rem;
         right: 0;
-        backdrop-filter: blur(45px);
+        backdrop-filter: blur(40px);
         text-align: center;
 
         &-link {
-            color: #fff;
-            font-size: 1.6rem;
+            color: var(--color-white);
+            font-size: var(--text-nav);
+            font-family: var(--ff-body);
             text-decoration: none;
             margin: 0 1rem;
             text-transform: uppercase;
+            letter-spacing: 1.5px;
             padding: 4rem .5rem;
 
             &-index {
-                margin-right: .5rem;
+              margin-right: .75rem;
+              font-weight: var(--text-thick);
             }
 
             &:hover {
-                border-bottom: 2px solid #fff;
+              border-bottom: 3px solid var(--color-white-hover);
+            }
+
+            &:active {
+              border-bottom: 3px solid var(--color-white);
             }
         }
     }
