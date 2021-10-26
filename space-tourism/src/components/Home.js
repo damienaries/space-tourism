@@ -24,7 +24,6 @@ const StyledHome = styled.div`
         align-items: center;
         padding: 10rem 0 0;
         margin: 10rem auto 0;
-        border: 1px solid yellow;
 
 
     .content-left {
