@@ -36,8 +36,8 @@ const StyledBar = styled.div`
     width: 100%;
     height: 90px;
     background: transparent;
-    position: absolute;
-    margin-top: 3rem;
+    position: fixed;
+    top: 3rem;
     padding: 1rem 0 1rem 3rem;
 
     .logo {

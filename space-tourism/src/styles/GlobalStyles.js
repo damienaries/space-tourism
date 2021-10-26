@@ -1,16 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-/*******************
- TODO 
-    create theme
-    Get fonts
-    set up variables
-
- *********************/
 
 export const GlobalStyles = createGlobalStyle`
-    /* Font import */
-    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800&family=Bellefair&display=swap');
-
     /*  
         font-family: 'Barlow Condensed', sans-serif;
         font-family: 'Bellefair', serif; 
