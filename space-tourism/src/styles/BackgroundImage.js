@@ -21,7 +21,7 @@ const BackgroundImage = () => {
     const { innerWidth } = window;
     let currentBg;
 
-    // if location === '/' => if width < 500 => tablet ELSE if width < 800 render tablet ELSE desktop
+    // if location === '/' => if width < 500 => mobile ELSE if width < 800 render tablet ELSE desktop
     if (location.pathname === '/') {
         if (innerWidth < 500) {
             currentBg = homeMobile;
