@@ -22,12 +22,18 @@ const StyledHome = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 10rem 0 0;
-        margin: 10rem auto 0;
+
+        @media only screen and (max-width: 800px){
+            flex-direction: column;
+        }
 
 
     .content-left {
         width: 50%;
+
+        @media only screen and (max-width: 800px) {
+            width: 100%;
+        }
     
         .pre-title {
             font-size: 2rem;
@@ -52,6 +58,10 @@ const StyledHome = styled.div`
             width: 90%;
             color: var(--color-blue);
             font-family: var(--ff-body);
+
+            @media only screen and (max-width: 800px) {
+                margin-bottom: 5rem;
+            }
         }
     }
 
@@ -60,10 +70,15 @@ const StyledHome = styled.div`
         height: 100%;
         text-align: right;
 
+        @media only screen and (max-width: 800px) {
+            width: 100%;
+            text-align: center;
+        }
+
 
         .explore {
-            height: 23rem;
-            width: 23rem;
+            height: 25rem;
+            width: 25rem;
             border-radius: 50%;
             font-size: 3rem;
             text-transform: uppercase;

@@ -24,10 +24,14 @@ const StyledLayout = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15rem;
+    padding: 10rem;
     position: relative;
     background-image: url(${BackgroundImage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    @media only screen and (max-width: 800px) {
+        padding: 5rem;
+    }
 `

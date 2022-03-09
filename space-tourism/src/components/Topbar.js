@@ -1,30 +1,53 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../logo.svg';
 import styled from 'styled-components';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 export default function Topbar() {
+  const { width } = useWindowDimensions();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const toggleMobileNav = () => {
+    setMobileNavOpen(prevState => !prevState);
+    setTimeout(() => {
+      setMobileNavOpen(false)
+    }, 10000);
+  }
+
     return (
         <StyledBar>
             <img src={Logo} alt="Logo" className="logo" />
             <div className="hr"></div>
-            <nav className="main-nav">
-              <Link to='/' className="main-nav-link">
-                <span className="main-nav-link-index">00</span>
-                <span className="main-nav-link-name">home</span>
-              </Link>
-              <Link to='/destination' className="main-nav-link">
-                <span className="main-nav-link-index">01</span>
-                <span className="main-nav-link-name">destination</span>
-              </Link>
-              <Link to='/crew' className="main-nav-link">
-                <span className="main-nav-link-index">02</span>
-                <span className="main-nav-link-name">crew</span>
-              </Link>
-              <Link to='/technology' className="main-nav-link">
-                <span className="main-nav-link-index">03</span>
-                <span className="main-nav-link-name">technology</span>
-              </Link>
-            </nav>
+            {
+              width < 800 ? (
+                <div className="hamburger" onClick={toggleMobileNav}>
+                  |||
+                </div>
+              ) : (
+                <nav className="main-nav">
+                  <Link to='/' className="main-nav-link">
+                    <span className="main-nav-link-index">00</span>
+                    <span className="main-nav-link-name">home</span>
+                  </Link>
+                  <Link to='/destination' className="main-nav-link">
+                    <span className="main-nav-link-index">01</span>
+                    <span className="main-nav-link-name">destination</span>
+                  </Link>
+                  <Link to='/crew' className="main-nav-link">
+                    <span className="main-nav-link-index">02</span>
+                    <span className="main-nav-link-name">crew</span>
+                  </Link>
+                  <Link to='/technology' className="main-nav-link">
+                    <span className="main-nav-link-index">03</span>
+                    <span className="main-nav-link-name">technology</span>
+                  </Link>
+                </nav>
+              )
+            }
+            <div className="mobile-nav" style={{ top: mobileNavOpen ? '50%' : '-1000%', left: mobileNavOpen ? '50%' : 0}}>
+              <h3>This is the mobile navigation modal placeholder</h3>
+            </div>
           </StyledBar>
     )
 }
@@ -49,6 +72,21 @@ const StyledBar = styled.div`
         transform: translate(4rem, 1px);
         width: 50%;
         z-index: 5;
+
+        @media only screen and (max-width: 800px) {
+          display: none;
+        }
+
+    }
+    
+    .hamburger {
+      font-size: 4rem;
+      transform: rotate(90deg);
+      margin-right: 2rem;
+      
+      &:hover{
+        cursor: pointer;
+      }
     }
 
     .main-nav {
@@ -81,5 +119,11 @@ const StyledBar = styled.div`
               border-bottom: 3px solid var(--color-white);
             }
         }
+    }
+
+    .mobile-nav {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      transition: all .3s ease-in;
     }
 `
