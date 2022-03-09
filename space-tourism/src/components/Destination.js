@@ -1,42 +1,50 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Moon from '../assets/destination/image-moon.webp';
+import { destinations } from '../data/data.json';
 
 
 /* 
 TODO
-    page layout
-    tabs + routing
-    import data from data.json
+    page responsive
+    figure out tabs + routing
+    
 */
 
-export default function Destination() {
-    return (
+export default function Destination(props) {
+    const [currentAster, setCurrentAster] = useState(destinations[0]);
+    const { name, description, distance, travel, images } = currentAster;
+    console.log(props);
+
+    return currentAster && (
         <StyledDestination>
             <div className="content-left">
                 <h4 className="page-title">
                     <span className="page-index">01</span>
                     Pick your destination
                 </h4>
-                <img src={Moon} alt="Moon" className="aster"/>
+                <img src={'.' + images.webp} alt="current" className="aster"/>
             </div>
             <div className="content-right">
                 <nav className="destination-tabs">
-                    <Link to="1" className="dest-tab">Moon</Link>
-                    <Link to="2" className="dest-tab">Mars</Link>
-                    <Link to="3" className="dest-tab">Europa</Link>
-                    <Link to="4" className="dest-tab">Titan</Link>
+                    {
+                        destinations && destinations.map((aster, index) => {
+                            return (
+                                <Link to={`/${aster.name.toLowerCase()}`} className="dest-tab" key={index}>{aster.name}</Link>
+                            )
+                        })
+                    }
                 </nav>
-                <h2 className="destination-title">Moon</h2>
-                <p className="destination-body">See our planet as you&apos;ve never seen it before. A perfect relaxing trip away to help regain perspective and come back frefreshed. While you&apos;re there, take in some history by visitng the Luna 2 and Apollo 11 landing sites.</p>
+                <h2 className="destination-title">{ name }</h2>
+                <p className="destination-body">{ description }</p>
                 <div className="stats">
                     <div className="stats-item">
                         <h6 className="stat-name">Avg. distance</h6>
-                        <h4 className="stat-value">384,400 KM</h4>
+                        <h4 className="stat-value">{ distance }</h4>
                     </div>
                     <div className="stats-item">
                         <h6 className="stat-name">Est. travel time</h6>
-                        <h4 className="stat-value">3 Days</h4>
+                        <h4 className="stat-value">{ travel }</h4>
                     </div>
                 </div>  
             </div>
