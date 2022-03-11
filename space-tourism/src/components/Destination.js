@@ -11,10 +11,9 @@ TODO
     
 */
 
-export default function Destination(props) {
+export default function Destination() {
     const [currentAster, setCurrentAster] = useState(destinations[0]);
     const { name, description, distance, travel, images } = currentAster;
-    console.log(props);
 
     return currentAster && (
         <StyledDestination>

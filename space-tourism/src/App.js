@@ -7,6 +7,7 @@ import Technology from './components/Technology';
 
 /**********************
  TODO
+    Make home page responsive
     dynamic destinations & crew tabs & techs
  ***********************/
 
@@ -17,9 +18,6 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/destination' component={Destination}/>
-          <Route exact path='/mars' component={Destination} aster="mars" />
-          <Route exact path='/europa' component={Destination} aster="europa" />
-          <Route exact path='/titan' component={Destination} aster="titan" />
           <Route exact path='/crew' component={Crew}/>
           <Route exact path='/technology' component={Technology}/>
         </Switch>
