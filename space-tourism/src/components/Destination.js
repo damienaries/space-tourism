@@ -1,19 +1,21 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { destinations } from '../data/data.json';
-
 
 /* 
 TODO
     page responsive
     figure out tabs + routing
-    
 */
 
 export default function Destination() {
+    let match = useRouteMatch();
     const [currentAster, setCurrentAster] = useState(destinations[0]);
     const { name, description, distance, travel, images } = currentAster;
+    const [imageUrl, setImageUrl] = useState(`.${images.webp}`);
+
+    console.log(imageUrl);
 
     return currentAster && (
         <StyledDestination>
@@ -22,19 +24,19 @@ export default function Destination() {
                     <span className="page-index">01</span>
                     Pick your destination
                 </h4>
-                <img src={'.' + images.webp} alt="current" className="aster"/>
+                <img src={imageUrl} alt="Aster" className="aster"/>
             </div>
             <div className="content-right">
-                <nav className="destination-tabs">
+                <ul className="destination-tabs">
                     {
                         destinations && destinations.map((aster, index) => {
                             return (
-                                <Link to={`/${aster.name.toLowerCase()}`} className="dest-tab" key={index}>{aster.name}</Link>
+                                <Link to={`destination/${aster.name.toLowerCase()}`} className="dest-tab" key={index}>{aster.name}</Link>
                             )
                         })
                     }
-                </nav>
-                <h2 className="destination-title">{ name }</h2>
+                </ul>
+               <h2 className="destination-title">{ name }</h2>
                 <p className="destination-body">{ description }</p>
                 <div className="stats">
                     <div className="stats-item">
@@ -45,7 +47,7 @@ export default function Destination() {
                         <h6 className="stat-name">Est. travel time</h6>
                         <h4 className="stat-value">{ travel }</h4>
                     </div>
-                </div>  
+                </div>
             </div>
         </StyledDestination>
     )
