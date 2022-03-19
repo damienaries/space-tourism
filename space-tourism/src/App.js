@@ -8,7 +8,6 @@ import Technology from './components/Technology';
 /**********************
  TODO
     Make home page responsive
-    dynamic destinations & crew tabs & techs
  ***********************/
 
 function App() {

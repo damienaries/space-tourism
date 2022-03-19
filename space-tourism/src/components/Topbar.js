@@ -17,7 +17,9 @@ export default function Topbar() {
 
     return (
         <StyledBar>
-            <img src={Logo} alt="Logo" className="logo" />
+            <Link to="/">
+              <img src={Logo} alt="Logo" className="logo" />
+            </Link>
             <div className="hr"></div>
             {
               width < 800 ? (

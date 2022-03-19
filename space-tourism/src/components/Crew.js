@@ -7,7 +7,6 @@ export default function Crew() {
     const [crewMember, setCrewMember] = useState(crew[0]);
     const { name, bio, role } = crewMember;
     const urlName = name.split(' ').join('-');
-    console.log(crew);
 
     const handleClick = index => {
         setCrewMember(crew[index]);
@@ -100,6 +99,7 @@ const StyledCrew = styled.div`
                 border-radius: 50%;
                 margin-right: 1.5rem;
                 background-color: var(--color-white);
+                cursor: pointer;
             }
         }
     }

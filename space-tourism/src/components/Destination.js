@@ -2,12 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { destinations } from '../data/data.json';
 
-/* 
-TODO
-    page responsive
-    figure out tabs + routing
-*/
-
 export default function Destination() {
     const [currentAster, setCurrentAster] = useState(destinations[0]);
     const { name, description, distance, travel } = currentAster;
@@ -109,6 +103,7 @@ const StyledDestination = styled.div`
                 padding-bottom: 1rem;
                 margin-right: 1.5rem;
                 border-bottom: 2px solid var(--color-white);
+                cursor: pointer;
 
                 &:hover,
                 &:active {

@@ -1,6 +1,16 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { technology } from '../data/data.json';
 
 export default function Technology() {
+    const [currentTech, setCurrentTech] = useState(technology[0]);
+    const { name, description } = currentTech;
+    const urlName = name.split(' ').join('-').toLowerCase();
+
+    const handleClick = index => {
+        setCurrentTech(technology[index]);
+    }
+
     return (
         <StyledTechnology>
             <div className="content-left">
@@ -10,18 +20,20 @@ export default function Technology() {
                 </h4>
                 <div className="tech-tabs">
                     <div className="tab-numbers">
-                        <div className="tab-link">1</div>
-                        <div className="tab-link">2</div>
-                        <div className="tab-link">3</div>
+                    {
+                        technology && technology.map((t, i) => (
+                            <div className="tab-link" onClick={() => handleClick(i)}>{i + 1}</div>
+                        ))
+                    }
                     </div>
                     <article className="tab-content">
                         <h6 className="tab-sub">The terminology...</h6>
-                        <h4 className="tab-title">Launch vehicle</h4>
-                        <p className="tab-body">A launch vehicle or carrier rocket ia a rocket propelled vehicle used to carry a payload from Earth&apos;s surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 meters tall, it is quite an awe-inspiring sight on the launch pad!</p>
+                        <h4 className="tab-title">{name}</h4>
+                        <p className="tab-body">{description}</p>
                     </article>
                 </div>
             </div>
-            <img src={"/img/technology/image-launch-vehicle-portrait.jpg"} alt="rocekt img" className="content-right" />
+            <img src={`/img/technology/image-${urlName}-portrait.jpg`} alt="rocekt img" className="content-right" />
         </StyledTechnology>
     )
 }
@@ -68,6 +80,7 @@ const StyledTechnology = styled.div`
                     margin: 1rem;
                     border: 1px solid var(--color-white);
                     border-radius: 50%;
+                    cursor: pointer;    
 
                     &:hover {
                         background-color: var(--color-white-hover);
