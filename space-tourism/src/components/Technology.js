@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import rocket from '../assets/technology/image-launch-vehicle-portrait.jpg';
 
 export default function Technology() {
     return (
@@ -22,7 +21,7 @@ export default function Technology() {
                     </article>
                 </div>
             </div>
-            <img src={rocket} alt="rocekt img" className="content-right" />
+            <img src={"/img/technology/image-launch-vehicle-portrait.jpg"} alt="rocekt img" className="content-right" />
         </StyledTechnology>
     )
 }

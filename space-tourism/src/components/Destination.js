@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { destinations } from '../data/data.json';
 
@@ -10,12 +9,12 @@ TODO
 */
 
 export default function Destination() {
-    let match = useRouteMatch();
     const [currentAster, setCurrentAster] = useState(destinations[0]);
-    const { name, description, distance, travel, images } = currentAster;
-    const [imageUrl, setImageUrl] = useState(`.${images.webp}`);
+    const { name, description, distance, travel } = currentAster;
 
-    console.log(imageUrl);
+    const handleClick = (index) => {
+        setCurrentAster(destinations[index]);
+    }
 
     return currentAster && (
         <StyledDestination>
@@ -24,14 +23,16 @@ export default function Destination() {
                     <span className="page-index">01</span>
                     Pick your destination
                 </h4>
-                <img src={imageUrl} alt="Aster" className="aster"/>
+                <img src={`/img/destination/image-${name}.webp`} alt="Aster" className="aster"/>
             </div>
             <div className="content-right">
                 <ul className="destination-tabs">
                     {
                         destinations && destinations.map((aster, index) => {
                             return (
-                                <Link to={`destination/${aster.name.toLowerCase()}`} className="dest-tab" key={index}>{aster.name}</Link>
+                                <span onClick={() => handleClick(index)} className="dest-tab" key={index}>
+                                    {aster.name}
+                                </span>
                             )
                         })
                     }
@@ -63,6 +64,10 @@ const StyledDestination = styled.div`
         width: 50%;
         padding: 4rem;
         position: relative;
+
+        @media only screen and (max-width: 900px){
+            padding: 
+        }
         
         .page-title {
             font-size: var(--size-title-5);

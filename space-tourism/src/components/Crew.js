@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Douglas from '../assets/crew/image-douglas-hurley.png';
 
 export default function Crew() {
     return (
@@ -23,7 +22,7 @@ export default function Crew() {
                 </div>
             </div>
             <div className="content-right">
-                <img src={Douglas} alt="crew member" className="crew-photo" />
+                <img src={`/img/crew/image-douglas-hurley.webp`} alt="crew member" className="crew-photo" />
             </div>
         </StyledCrew>
     )
@@ -96,10 +95,11 @@ const StyledCrew = styled.div`
     .content-right {
         width: 40%;
         margin: 0 auto;
+        position: relative;
 
         .crew-photo {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 80vh;
             margin-left: 5rem;
         }
     }
