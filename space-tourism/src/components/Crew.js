@@ -1,28 +1,40 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { crew } from '../data/data.json';
+
 
 export default function Crew() {
+    const [crewMember, setCrewMember] = useState(crew[0]);
+    const { name, bio, role } = crewMember;
+    const urlName = name.split(' ').join('-');
+    console.log(crew);
+
+    const handleClick = index => {
+        setCrewMember(crew[index]);
+    }
+
     return (
         <StyledCrew>
             <div className="content-left">
                 <h4 className="page-title">
                     <span className="page-index">02</span>
-                    Pick your destination
+                    Meet your crew
                 </h4>
-                <h3 className="crew-role">Commander</h3>
-                <h2 className="crew-name">Douglas Hurley</h2>
+                <h3 className="crew-role">{role}</h3>
+                <h2 className="crew-name">{name}</h2>
                 <p className="crew-bio">
-                    Douglas Gerald Hurley is an american engineer, former Marine Corps pilot and former NASA astronaut. He launhced into space for the third time as commander of Crew Dragon Demo-2.
+                    {bio}
                 </p>
-                {/* TODO figure out tab navigation */}
                 <div className="page-nav">
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
+                    {
+                        crew && crew.map((c, index) => (
+                            <div className="dot" onClick={() => handleClick(index)}></div>
+                        ))
+                    } 
                 </div>
             </div>
             <div className="content-right">
-                <img src={`/img/crew/image-douglas-hurley.webp`} alt="crew member" className="crew-photo" />
+                <img src={`/img/crew/image-${urlName}.webp`} alt="crew member" className="crew-photo" />
             </div>
         </StyledCrew>
     )
