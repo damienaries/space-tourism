@@ -40,6 +40,11 @@ const StyledHome = styled.div`
             text-transform: uppercase;
             color: var(--color-blue);
             font-family: var(--ff-body);
+
+            @media only screen and (max-width: 500px){
+                margin-top: 3rem;
+            }
+
         }
 
         .title {
@@ -82,11 +87,16 @@ const StyledHome = styled.div`
             border-radius: 50%;
             font-size: 3rem;
             text-transform: uppercase;
-            transition: all .2s ease;
+            transition: all .3s ease;
 
             &:hover {   
                 cursor: pointer;
                 outline: 6rem solid var(--color-white-hover);
+            }
+
+            @media only screen and (max-width: 500px){
+                height: 20rem;
+                width: 20rem;
             }
         }
     }

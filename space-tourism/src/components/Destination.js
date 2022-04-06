@@ -60,7 +60,9 @@ const StyledDestination = styled.div`
         position: relative;
 
         @media only screen and (max-width: 900px){
-            padding: 
+            padding: 2rem;
+            width: 90%;
+            margin-top: 1rem;
         }
         
         .page-title {
@@ -83,6 +85,11 @@ const StyledDestination = styled.div`
             width: 80%;
             height: auto;
             transform: translateX(20%);
+
+            @media only screen and (max-width: 900px){
+                transform: translateX(0);
+            }
+
         }
     }
 
@@ -92,12 +99,30 @@ const StyledDestination = styled.div`
         position: relative;
         padding: 3rem;
 
+        @media only screen and (max-width: 900px){
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 2rem 0;
+            width: 100%;
+        }
+
+
         .destination-tabs {
             font-size: var(--text-nav);
             font-family: var(--ff-body);
             text-transform: uppercase;
             margin-bottom: 4rem;
             letter-spacing: 1px;
+
+            @media only screen and (max-width: 900px){
+                width: 100%;
+                display: flex;
+                justify-content: space-between; 
+                font-size: var(--text-nav-large);
+                margin-bottom: 1rem;
+            }
+
 
             .dest-tab {
                 padding-bottom: 1rem;
@@ -109,6 +134,10 @@ const StyledDestination = styled.div`
                 &:active {
                     border-bottom: 2px solid inherit;
                 }
+
+                &::last-child {
+                    margin-right: 0;
+                }
             }
         }
 
@@ -118,6 +147,11 @@ const StyledDestination = styled.div`
             font-weight: var(--text-thin);
             text-transform: uppercase;
             margin: 1rem 0;
+
+            @media only screen and (max-width: 900px){
+                font-size: var(--size-title-4);
+            }
+
         }
 
         .destination-body {
@@ -126,6 +160,11 @@ const StyledDestination = styled.div`
             line-height: 1.3;
             padding-bottom: 4rem;
             border-bottom: 1px solid var(--color-white-hover);
+            
+            @media only screen and (max-width: 900px){
+                width: 100%;
+            }
+
         }
 
         .stats {
@@ -152,5 +191,6 @@ const StyledDestination = styled.div`
 
     @media screen and (max-width: 800px) {
         flex-direction: column;
+        max-height: 100vh;
     }
 `;

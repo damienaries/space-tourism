@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-    /*  
-        font-family: 'Barlow Condensed', sans-serif;
-        font-family: 'Bellefair', serif; 
-    */
 
     * {
         box-sizing: border-box;
@@ -24,6 +20,7 @@ export const GlobalStyles = createGlobalStyle`
         --size-title-4: 3.2rem;
         --size-title-5: 2.8rem; /* Subtitle 1 */
         --size-title-sub: 1.4rem;
+        --text-nav-large: 2rem;
         --text-nav: 1.6rem;
         --text-body: 1.6rem;
         --text-thin: 100;
@@ -47,6 +44,8 @@ export const GlobalStyles = createGlobalStyle`
     body {
         position: relative;
         color: #fff;
+        height: 100vh;
+        width: 100vw;
     }
 
     a,

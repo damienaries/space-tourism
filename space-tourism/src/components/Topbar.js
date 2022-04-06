@@ -12,7 +12,7 @@ export default function Topbar() {
     setMobileNavOpen(prevState => !prevState);
     setTimeout(() => {
       setMobileNavOpen(false)
-    }, 10000);
+    }, 5000);
   }
 
     return (
@@ -23,7 +23,7 @@ export default function Topbar() {
             <div className="hr"></div>
             {
               width < 800 ? (
-                <div className="hamburger" onClick={toggleMobileNav}>
+                <div className={`hamburger ${mobileNavOpen ? 'open' : ''}`} onClick={toggleMobileNav}>
                   |||
                 </div>
               ) : (
@@ -47,9 +47,24 @@ export default function Topbar() {
                 </nav>
               )
             }
-            <div className="mobile-nav" style={{ top: mobileNavOpen ? '50%' : '-1000%', left: mobileNavOpen ? '50%' : 0}}>
-              <h3>This is the mobile navigation modal placeholder</h3>
-            </div>
+            <nav className="mobile-nav" style={{ display: mobileNavOpen ? 'flex' : 'none'}}>
+              <Link to='/' className="main-nav-link mobile" onClick={toggleMobileNav}>
+                <span className="main-nav-link-index">00</span>
+                <span className="main-nav-link-name">home</span>
+              </Link>
+              <Link to='/destination' className="main-nav-link mobile" onClick={toggleMobileNav}>
+                <span className="main-nav-link-index">01</span>
+                <span className="main-nav-link-name">destination</span>
+              </Link>
+              <Link to='/crew' className="main-nav-link mobile" onClick={toggleMobileNav}>
+                <span className="main-nav-link-index">02</span>
+                <span className="main-nav-link-name">crew</span>
+              </Link>
+              <Link to='/technology' className="main-nav-link mobile" onClick={toggleMobileNav}>
+                <span className="main-nav-link-index">03</span>
+                <span className="main-nav-link-name">technology</span>
+              </Link>
+          </nav>
           </StyledBar>
     )
 }
@@ -62,11 +77,13 @@ const StyledBar = styled.div`
     height: 90px;
     background: transparent;
     position: fixed;
-    top: 3rem;
-    padding: 1rem 0 1rem 3rem;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 0;
 
     .logo {
         margin-left: 2rem;
+        z-index: 1000;
     }
 
     .hr {
@@ -85,9 +102,16 @@ const StyledBar = styled.div`
       font-size: 4rem;
       transform: rotate(90deg);
       margin-right: 2rem;
+      z-index: 1000;
+      color: var(--color-white);
       
       &:hover{
         cursor: pointer;
+        color: var(--color-white-hover);
+      }
+
+      & .open {
+        color: var(--color-blue);
       }
     }
 
@@ -108,6 +132,10 @@ const StyledBar = styled.div`
             letter-spacing: 1.5px;
             padding: 4rem .5rem;
 
+            &.mobile {
+              font-size: var(--size-title-5);
+            }
+
             &-index {
               margin-right: .75rem;
               font-weight: var(--text-thick);
@@ -125,7 +153,16 @@ const StyledBar = styled.div`
 
     .mobile-nav {
       position: absolute;
-      transform: translate(-50%, -50%);
-      transition: all .3s ease-in;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      transition: all .5s ease-in;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+      background-color: var(--color-dark);
+      border: 1px solid red;
     }
 `
