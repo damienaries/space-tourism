@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { technology } from '../data/data.json';
+import data from '../data/data.json';
 
 export default function Technology() {
+    const technology = data.technology;
     const [currentTech, setCurrentTech] = useState(technology[0]);
     const { name, description } = currentTech;
     const urlName = name.split(' ').join('-').toLowerCase();
@@ -21,8 +22,8 @@ export default function Technology() {
                 <div className="tech-tabs">
                     <div className="tab-numbers">
                     {
-                        technology && technology.map((t, i) => (
-                            <div className="tab-link" onClick={() => handleClick(i)}>{i + 1}</div>
+                        technology && technology.map((t, index) => (
+                            <div className="tab-link" key={index} onClick={() => handleClick(index)}>{index + 1}</div>
                         ))
                     }
                     </div>

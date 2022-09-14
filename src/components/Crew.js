@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { crew } from '../data/data.json';
+import data from '../data/data.json';
 
 
 export default function Crew() {
+    const crew = data.crew;
     const [crewMember, setCrewMember] = useState(crew[0]);
     const { name, bio, role } = crewMember;
     const urlName = name.split(' ').join('-');
@@ -27,7 +28,7 @@ export default function Crew() {
                 <div className="page-nav">
                     {
                         crew && crew.map((c, index) => (
-                            <div className="dot" onClick={() => handleClick(index)}></div>
+                            <div className="dot" key={index} onClick={() => handleClick(index)}></div>
                         ))
                     } 
                 </div>

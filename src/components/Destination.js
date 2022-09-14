@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { destinations } from '../data/data.json';
+import data from '../data/data.json';
 
 export default function Destination() {
+    const destinations = data.destinations;
     const [currentAster, setCurrentAster] = useState(destinations[0]);
     const { name, description, distance, travel } = currentAster;
 
